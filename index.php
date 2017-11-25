@@ -33,25 +33,3 @@ function show_article($sn)
     $data   = $result->fetch_assoc();
     $smarty->assign('article', $data);
 }
-
-//讀出所有文章
-function list_article()
-{
-    global $db, $smarty;
-
-    $sql    = "SELECT * FROM `article` ORDER BY `update_time` DESC";
-    $result = $db->query($sql) or die($db->error);
-    $all    = [];
-    $i      = 0;
-    while ($data = $result->fetch_assoc()) {
-        $all[$i] = $data;
-        $wkstr1  = mb_substr(strip_tags($data['content']), 0, 90);
-        if (mb_strlen(strip_tags($data['content'])) > mb_strlen($wkstr1)) {
-            $wkstr1 .= "<span style='color:red;font-size:0.6em;font-weight:900;'><<更多.......>></span>";
-        }
-        $all[$i]['summary'] = $wkstr1;
-        $i++;
-    }
-    // die(var_export($all));
-    $smarty->assign('all', $all);
-}

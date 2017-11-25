@@ -3,7 +3,7 @@
 <form action="admin.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title" class="col-form-label sr-only">文章標題</label>
-        <input type="text" class="form-control" name="title" id="title" placeholder="請輸入文章標題">
+        <input type="text" class="form-control" name="title" id="title" placeholder="請輸入文章內容" value="{$article_title}">
     </div>
     <div class="form-group">
         <label for="content" class="col-form-label sr-only">文章內容</label>
@@ -14,7 +14,8 @@
         <input type="file" class="form-control" name="pic" id="pic" placeholder="請上傳一張封面圖">
     </div>
     <div class="text-center">
-        <input type="hidden" name="op" value="insert">
+        <input type="hidden" name="sn" value="{$article.sn}">
+        <input type="hidden" name="op" value="update">
         <input type="hidden" name="username" value="{$smarty.session.username}">
         <button type="submit" class="btn btn-primary">儲存</button>
     </div>

@@ -17,8 +17,13 @@ switch ($op) {
         header("location: index.php");
         exit;
 
+    case 'modify_article':
+        show_article($sn);
+        break;
+
     case "article_form":
         break;
+    
     default:
         break;
 }
